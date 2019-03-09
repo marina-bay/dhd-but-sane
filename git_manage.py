@@ -1,9 +1,9 @@
-#!/usr/bin/env python2
-
 # See https://pymotw.com/2/multiprocessing/communication.html
 import multiprocessing
 import os
 import subprocess
+
+from compat import *
 
 _current_dir = os.getcwd()
 
@@ -54,11 +54,17 @@ def manage_git_repo(url, folder_name):
         # Fresh clone
         _operation = 'cloning'
         print("Cloning %s" % url)
-        p = subprocess.Popen(
-              ['git', 'clone', url, folder_name],
-              stdin=subprocess.PIPE, stdout=subprocess.PIPE,
-              #encoding='utf8'  #python3 only
-        )
+        if PY3:
+            p = subprocess.Popen(
+                  ['git', 'clone', url, folder_name],
+                  stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                  encoding='utf8'  # python3 only
+            )
+        else:
+            p = subprocess.Popen(
+                  ['git', 'clone', url, folder_name],
+                  stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+            )
     res = p.communicate()
     if res[1]:
         print("Error while %s: %s" % (_operation, res[1]))
