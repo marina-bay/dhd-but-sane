@@ -1,0 +1,53 @@
+---
+
+# TODO: Check interdependencies of middlewares
+
+# Build system checks ANDROID_VERSION_MAJOR and then chooses
+# legacy_middlewares or common_middlewares
+
+# for android < 8
+legacy_middlewares:
+  - url: https://github.com/mer-hybris/libhybris
+  - url: https://github.com/mer-hybris/pulseaudio-modules-droid.git
+    spec: rpm/pulseaudio-modules-droid.spec
+  - url: https://github.com/nemomobile/mce-plugin-libhybris.git
+  - url: https://github.com/mer-hybris/ngfd-plugin-droid-vibrator
+    spec: rpm/ngfd-plugin-native-vibrator.spec
+  - url: https://github.com/mer-hybris/qt5-feedback-haptics-droid-vibrator
+    spec: rpm/qt5-feedback-haptics-native-vibrator.spec
+  - url: https://github.com/mer-hybris/qt5-qpa-hwcomposer-plugin
+  - url: https://github.com/mer-hybris/qt5-qpa-surfaceflinger-plugin
+  - url: https://git.merproject.org/mer-core/qtscenegraph-adaptation.git
+    spec: rpm/qtscenegraph-adaptation-droid.spec
+  - url: https://git.merproject.org/mer-core/sensorfw.git
+    spec: rpm/sensorfw-qt5-hybris.spec
+
+# for android >= 8
+common_middlewares:
+  - url: https://github.com/mer-hybris/libhybris
+  - url: https://git.merproject.org/mer-core/libglibutil.git
+  - url: https://github.com/mer-hybris/libgbinder
+  - url: https://github.com/mer-hybris/libgbinder-radio
+  - url: https://github.com/mer-hybris/bluebinder
+  - url: https://github.com/mer-hybris/ofono-ril-binder-plugin
+  - url: https://github.com/mer-hybris/pulseaudio-modules-droid.git
+    spec: rpm/pulseaudio-modules-droid.spec
+  - url: https://github.com/nemomobile/mce-plugin-libhybris.git
+  - url: https://github.com/mer-hybris/ngfd-plugin-droid-vibrator
+    spec: rpm/ngfd-plugin-native-vibrator.spec
+  - url: https://github.com/mer-hybris/qt5-feedback-haptics-droid-vibrator
+    spec: rpm/qt5-feedback-haptics-native-vibrator.spec
+  - url: https://github.com/mer-hybris/qt5-qpa-hwcomposer-plugin
+  - url: https://github.com/mer-hybris/qt5-qpa-surfaceflinger-plugin
+  - url: https://git.merproject.org/mer-core/qtscenegraph-adaptation.git
+    spec: rpm/qtscenegraph-adaptation-droid.spec
+  - url: https://git.merproject.org/mer-core/sensorfw.git
+    spec: rpm/sensorfw-qt5-hybris.spec
+
+# replaces legacy_middlewares and common_middlewares
+# Set this in your custom mw-targets.yaml
+#custom_middlewares:
+
+# extends legacy_middlewares or common_middlewares
+# Set this in your custom mw-targets.yaml
+#extra_middlewares:
